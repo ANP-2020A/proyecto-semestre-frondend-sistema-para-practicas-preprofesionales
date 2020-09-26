@@ -1,3 +1,25 @@
 .logout-link {
-    color: #ff4d4f!important;
+  color: #ff4d4f !important;
+}
+
+.ant-layout-sider {
+  background: linear-gradient(180deg, #2c497f 0%, rgba(255, 255, 255, 0) 100%),
+    #2c497f !important;
+}
+
+.ant-menu.ant-menu-dark,
+.ant-menu-dark .ant-menu-sub,
+.ant-menu.ant-menu-dark .ant-menu-sub {
+  background: linear-gradient(180deg, #2c497f 0%, rgba(255, 255, 255, 0) 100%),
+    #2c497f !important;
+}
+
+.header-wrapper {
+  background: linear-gradient(180deg, #2c497f 0%, rgba(255, 255, 255, 0) 100%),
+    #2c497f !important;
+}
+
+.ant-layout-sider-trigger {
+  background: linear-gradient(180deg, #2c497f 0%, rgba(255, 255, 255, 0) 100%),
+    #2c497f !important;
 }

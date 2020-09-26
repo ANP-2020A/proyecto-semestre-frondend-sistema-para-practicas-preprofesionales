@@ -5,16 +5,21 @@ import React, { useState } from "react";
 
 import Routes from "../constants/routes";
 import { useAuth } from "../providers/Auth";
-import { Menu } from "antd";
+import { Layout, Menu, Breadcrumb } from "antd";
 import {
   LogoutOutlined,
   LoginOutlined,
   LoadingOutlined,
   UserOutlined,
+  DesktopOutlined,
+  PieChartOutlined,
+  FileOutlined,
+  TeamOutlined,
 } from "@ant-design/icons";
 import { Link, useLocation } from "react-router-dom";
 import "../styles/navigation.css";
-
+const { Sider } = Layout;
+const { SubMenu } = Menu;
 const linkStyle = {};
 
 const Navigation = (props) => {
@@ -42,89 +47,92 @@ const Navigation = (props) => {
     });
   };
 
+  const onCollapse = (collapsed) => {
+    setMenuState({ collapsed: collapsed });
+  };
+
   return (
     <>
-      <Menu
-        mode={props.mode}
-        onClick={handleClick}
-        className="menu"
-        theme="dark"
+      <Sider
+        collapsible
+        collapsed={menuState.collapsed}
+        onCollapse={onCollapse}
         selectedKeys={[menuState.current]}
-        style={{
-          lineHeight: "64px",
-          width: "fit-content",
-        }}
+        mode={props.mode}
       >
-        <Menu.Item key={Routes.HOME}>
-          <Link to={Routes.HOME} style={linkStyle}>
-            Home
-          </Link>
-        </Menu.Item>
+        <div className="logo" />
+        <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
+          <Menu.Item key={Routes.HOME}>
+            <Link to={Routes.HOME} style={linkStyle}>
+              Home
+            </Link>
+          </Menu.Item>
 
-        <Menu.Item key={Routes.OFFERS}>
-          <Link to={Routes.OFFERS} style={linkStyle}>
-            Ofertas
-          </Link>
-        </Menu.Item>
+          <Menu.Item key={Routes.OFFERS}>
+            <Link to={Routes.OFFERS} style={linkStyle}>
+              Ofertas
+            </Link>
+          </Menu.Item>
 
-        <Menu.Item key={Routes.PRIVATE}>
-          <Link to={Routes.PRIVATE} style={linkStyle}>
-            Privada
-          </Link>
-        </Menu.Item>
+          <Menu.Item key={Routes.PRIVATE}>
+            <Link to={Routes.PRIVATE} style={linkStyle}>
+              Privada
+            </Link>
+          </Menu.Item>
 
-        <Menu.Item key={Routes.ANTD}>
-          <Link to={Routes.ANTD} style={linkStyle}>
-            ANTD
-          </Link>
-        </Menu.Item>
+          <Menu.Item key={Routes.ANTD}>
+            <Link to={Routes.ANTD} style={linkStyle}>
+              ANTD
+            </Link>
+          </Menu.Item>
 
-        <Menu.Item key={Routes.ABOUT}>
-          <Link to={Routes.ABOUT} style={linkStyle}>
-            About
-          </Link>
-        </Menu.Item>
+          <Menu.Item key={Routes.ABOUT}>
+            <Link to={Routes.ABOUT} style={linkStyle}>
+              About
+            </Link>
+          </Menu.Item>
 
-        {isAuthenticated ? (
-          <Menu.SubMenu
-            icon={<UserOutlined />}
-            title={currentUser && currentUser.name}
-          >
-            <Menu.ItemGroup title="Item 1">
-              <Menu.Item key="setting:1">Option 1</Menu.Item>
-              <Menu.Item key="setting:2">Option 2</Menu.Item>
-            </Menu.ItemGroup>
-            <Menu.ItemGroup title="Item 2">
-              <Menu.Item key="setting:3">Option 3</Menu.Item>
-              <Menu.Item key="setting:4">Option 4</Menu.Item>
-            </Menu.ItemGroup>
+          {isAuthenticated ? (
+            <Menu.SubMenu
+              icon={<UserOutlined />}
+              title={currentUser && currentUser.name}
+            >
+              <Menu.ItemGroup title="Item 1">
+                <Menu.Item key="setting:1">Option 1</Menu.Item>
+                <Menu.Item key="setting:2">Option 2</Menu.Item>
+              </Menu.ItemGroup>
+              <Menu.ItemGroup title="Item 2">
+                <Menu.Item key="setting:3">Option 3</Menu.Item>
+                <Menu.Item key="setting:4">Option 4</Menu.Item>
+              </Menu.ItemGroup>
 
+              <Menu.Item key={Routes.LOGIN}>
+                <Link to={Routes.LOGOUT} className="logout-link">
+                  {isCheckingAuth ? (
+                    <LoadingOutlined />
+                  ) : (
+                    <>
+                      <LogoutOutlined /> Salir
+                    </>
+                  )}
+                </Link>
+              </Menu.Item>
+            </Menu.SubMenu>
+          ) : (
             <Menu.Item key={Routes.LOGIN}>
-              <Link to={Routes.LOGOUT} className="logout-link">
+              <Link to={Routes.LOGIN}>
                 {isCheckingAuth ? (
                   <LoadingOutlined />
                 ) : (
                   <>
-                    <LogoutOutlined /> Salir
+                    <LoginOutlined /> Ingresar
                   </>
                 )}
               </Link>
             </Menu.Item>
-          </Menu.SubMenu>
-        ) : (
-          <Menu.Item key={Routes.LOGIN}>
-            <Link to={Routes.LOGIN}>
-              {isCheckingAuth ? (
-                <LoadingOutlined />
-              ) : (
-                <>
-                  <LoginOutlined /> Ingresar
-                </>
-              )}
-            </Link>
-          </Menu.Item>
-        )}
-      </Menu>
+          )}
+        </Menu>
+      </Sider>
     </>
   );
 };
