@@ -48,45 +48,17 @@ const Navigation = (props) => {
         mode={props.mode}
         onClick={handleClick}
         className="menu"
-        theme="dark"
+        theme="light"
         selectedKeys={[menuState.current]}
         style={{
           lineHeight: "64px",
           width: "fit-content",
+          opacity:"100%",
         }}
       >
-        <Menu.Item key={Routes.HOME}>
-          <Link to={Routes.HOME} style={linkStyle}>
-            Home
-          </Link>
-        </Menu.Item>
-
-        <Menu.Item key={Routes.OFFERS}>
-          <Link to={Routes.OFFERS} style={linkStyle}>
-            Ofertas
-          </Link>
-        </Menu.Item>
-
-        <Menu.Item key={Routes.PRIVATE}>
-          <Link to={Routes.PRIVATE} style={linkStyle}>
-            Privada
-          </Link>
-        </Menu.Item>
-
-        <Menu.Item key={Routes.ANTD}>
-          <Link to={Routes.ANTD} style={linkStyle}>
-            ANTD
-          </Link>
-        </Menu.Item>
-
-        <Menu.Item key={Routes.ABOUT}>
-          <Link to={Routes.ABOUT} style={linkStyle}>
-            About
-          </Link>
-        </Menu.Item>
 
         {isAuthenticated ? (
-          <Menu.SubMenu
+          <Menu.SubMenu 
             icon={<UserOutlined />}
             title={currentUser && currentUser.name}
           >
@@ -118,7 +90,7 @@ const Navigation = (props) => {
                 <LoadingOutlined />
               ) : (
                 <>
-                  <LoginOutlined /> Ingresar
+                  <LoginOutlined /> Iniciar Sesión
                 </>
               )}
             </Link>

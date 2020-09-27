@@ -6,10 +6,10 @@ import Routes from '../constants/routes';
 import Navigation from './Navigation';
 import { Layout, Row, Col, Button, Popover } from 'antd';
 import { FacebookOutlined, InstagramOutlined, GithubOutlined, MailOutlined, WhatsAppOutlined } from '@ant-design/icons';
-import logo from '../images/logo-menta.png';
+import logo from '../images/Logo1.png';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-
+import imagen from '../images/fondo.jpg';
 const Header = Layout.Header;
 const Content = Layout.Content;
 const Footer = Layout.Footer;
@@ -32,8 +32,8 @@ const MainLayout = props => {
           <Col span={ 20 }>
             <Header className='header'>
               <Row type='flex' justify='space-between' align='bottom'>
-                <Col xs={ 24 } md={ 6 } className='logo-wrapper'>
-                  <a href={ process.env.REACT_APP_DOMAIN }>
+                <Col xs={ 12 } md={ 3 } className='logo-wrapper'>
+                  <a href={ Routes.HOME }>
                     <img className='logo' src={ logo } alt='Grupo Menta' /></a>
                 </Col>
 
@@ -62,7 +62,7 @@ const MainLayout = props => {
                 </Col>
 
                 <Col xs={ 22 } md={ 4 } className='logos-social-header' align='right'>
-                  <a href='https://www.facebook.com'
+                  <a  href='https://www.facebook.com'
                      target='_blank'
                      rel='noopener noreferrer'
                      style={ {
@@ -72,7 +72,7 @@ const MainLayout = props => {
                     <FacebookOutlined />
                   </a>
 
-                  <a href='https://www.instagram.com' target='_blank' rel='noopener noreferrer'>
+                  <a  href='https://www.instagram.com' target='_blank' rel='noopener noreferrer'>
                     <InstagramOutlined />
                   </a>
                 </Col>
@@ -121,12 +121,12 @@ const MainLayout = props => {
                  } }
                  className='contact-links'>
               <p><strong>Contáctanos</strong></p>
-              <p><MailOutlined /> <a href='mailto:chalo.salvador@grupomenta.com'>chalo.salvador@grupomenta.com</a></p>
-              <p><WhatsAppOutlined /> <a href='https://wa.me/593984794808' target='_blank' rel='noopener noreferrer'>+593
-                9-8479-4808</a></p>
-              <p><GithubOutlined /> <a href='https://github.com/chalosalvador'
+              <p><MailOutlined /> <a href='mailto:wester.mendoza@epn.edu.ec'>wester.mendoza@epn.edu.ec</a></p>
+              <p><WhatsAppOutlined /> <a href='https://wa.me/593992514455' target='_blank' rel='noopener noreferrer'>+593
+                9-9251-4455</a></p>
+              <p><GithubOutlined /> <a href='https://github.com/JoelMendoza1'
                                        target='_blank'
-                                       rel='noopener noreferrer'>@chalosalvador</a>
+                                       rel='noopener noreferrer'>@JoelMendoza1</a>
               </p>
             </Col>
           </Row>
