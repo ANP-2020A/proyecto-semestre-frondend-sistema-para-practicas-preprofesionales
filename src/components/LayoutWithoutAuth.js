@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Home from "./Home";
 import About from "./About";
-import Dashboard from "./Dashboard";
+import History from "./History";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import LoginForm from "./Login";
@@ -49,7 +49,7 @@ const LayoutWithoutAuth = () => {
                     <LoginForm />
                   </Route>
                   <Route path="/signin">
-                    <Dashboard />
+                    <History />
                   </Route>
                 </Switch>
               </Content>

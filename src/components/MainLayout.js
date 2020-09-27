@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useUserSession } from "../context/user-context";
 import Home from "./Home";
 import About from "./About";
-import Dashboard from "./Dashboard";
+import History from "./History";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Layout, Menu, Breadcrumb, Button, Input } from "antd";
@@ -13,16 +13,33 @@ import {
   TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-
+import Offers from "./Offers";
+import getUrl from "../utils/url";
+const baseUrl = getUrl();
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 const MainLayout = () => {
   const { token, infoUsuario, logout } = useUserSession();
   const [collapsed, setCollapsed] = useState(false);
+  const [user, setUser] = useState([]);
   const onCollapse = (collapsed) => {
     console.log(collapsed);
     setCollapsed(collapsed);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch(baseUrl + "/user", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      const data = await result.json();
+      setUser(data.data);
+      console.log(data);
+    };
+    fetchData();
+  }, []);
 
   function onClick(e) {
     e.preventDefault();
@@ -65,13 +82,13 @@ const MainLayout = () => {
               >
                 <Switch>
                   <Route exact path="/">
-                    <Home />
+                    <Offers />
                   </Route>
                   <Route path="/profile">
                     <About />
                   </Route>
                   <Route path="/history">
-                    <Dashboard />
+                    <History />
                   </Route>
                 </Switch>
               </div>
