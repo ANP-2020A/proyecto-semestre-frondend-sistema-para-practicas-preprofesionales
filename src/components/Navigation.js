@@ -68,9 +68,21 @@ const Navigation = (props) => {
             </Link>
           </Menu.Item>
 
+          <Menu.Item key={Routes.PROFILE}>
+            <Link to={Routes.PROFILE} style={linkStyle}>
+              Perfil
+            </Link>
+          </Menu.Item>
+
           <Menu.Item key={Routes.OFFERS}>
             <Link to={Routes.OFFERS} style={linkStyle}>
               Ofertas
+            </Link>
+          </Menu.Item>
+
+          <Menu.Item key={Routes.HISTORY}>
+            <Link to={Routes.HISTORY} style={linkStyle}>
+              Historial
             </Link>
           </Menu.Item>
 

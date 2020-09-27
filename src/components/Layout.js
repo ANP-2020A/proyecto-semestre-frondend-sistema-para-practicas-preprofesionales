@@ -65,11 +65,11 @@ const MainLayout = (props) => {
       ) : (
         <>
           <Content className="noAuth">
-            <Row type="flex" justify="center" style={{ flex: "auto" }}>
+            <Row type="flex" style={{ flex: "auto" }}>
               <Col xs={22} md={20} style={{ marginTop: "-3%" }}>
                 <Navbar />
               </Col>
-              <Col xs={22} md={20}>
+              <Col xs={22} md={24}>
                 {props.children}
               </Col>
             </Row>

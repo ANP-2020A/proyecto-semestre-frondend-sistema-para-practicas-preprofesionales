@@ -1,20 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/index.css';
-import App from './components/App';
+import './index.css';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-
-/**
- * Este es el punto de entrada del sistema
- * todas las peticiones empiezan aqui y renderiza
- * el componente App
- */
 ReactDOM.render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <App />
-  // </React.StrictMode>
-,
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
